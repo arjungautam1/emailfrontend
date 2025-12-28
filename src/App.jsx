@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import EmailList from './components/EmailList';
 import EmailForm from './components/EmailForm';
+import config from './config';
 import './App.css';
 
 function App() {
@@ -15,13 +16,22 @@ function App() {
   const fetchEmails = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/emails');
-      if (!response.ok) throw new Error('Failed to fetch emails');
+      const response = await fetch(`${config.API_BASE_URL}/api/emails`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to fetch emails: ${response.status} ${errorText}`);
+      }
       const data = await response.json();
       setEmails(data);
       setError(null);
     } catch (err) {
-      setError(err.message);
+      console.error('Error fetching emails:', err);
+      setError(err.message || 'Failed to fetch emails. Make sure the backend is running.');
     } finally {
       setLoading(false);
     }
@@ -33,7 +43,7 @@ function App() {
       
       if (action === 'send') {
         // Send email endpoint
-        const response = await fetch('/api/emails/send', {
+        const response = await fetch(`${config.API_BASE_URL}/api/emails/send`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -52,7 +62,7 @@ function App() {
         return true;
       } else {
         // Save as draft
-        const response = await fetch('/api/emails', {
+        const response = await fetch(`${config.API_BASE_URL}/api/emails`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,7 +84,7 @@ function App() {
 
   const handleDeleteEmail = async (id) => {
     try {
-      const response = await fetch(`/api/emails/${id}`, {
+      const response = await fetch(`${config.API_BASE_URL}/api/emails/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete email');
@@ -88,7 +98,7 @@ function App() {
   const handleSendEmail = async (id) => {
     try {
       setError(null);
-      const response = await fetch(`/api/emails/${id}/send`, {
+      const response = await fetch(`${config.API_BASE_URL}/api/emails/${id}/send`, {
         method: 'POST',
       });
       
