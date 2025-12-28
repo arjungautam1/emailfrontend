@@ -1,0 +1,253 @@
+.email-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sender-info {
+  background: #e7f3ff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border-left: 3px solid #667eea;
+}
+
+.sender-info small {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.sender-info strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.email-form h2 {
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.error-banner {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.required {
+  color: #dc3545;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-group textarea {
+  resize: none;
+  min-height: 80px;
+  max-height: 80px;
+  line-height: 1.5;
+}
+
+.error-text {
+  display: block;
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.help-text {
+  display: block;
+  color: #6c757d;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.char-count {
+  position: absolute;
+  right: 12px;
+  top: 38px;
+  color: #6c757d;
+  font-size: 0.8rem;
+  background: white;
+  padding: 2px 6px;
+}
+
+.advanced-toggle {
+  margin-bottom: 15px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+  color: #764ba2;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.clear-btn,
+.save-btn,
+.submit-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.clear-btn {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 2px solid #e0e0e0;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: #e9ecef;
+  border-color: #d0d0d0;
+  transform: translateY(-1px);
+}
+
+.save-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  flex: 1.5;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.clear-btn:disabled,
+.save-btn:disabled,
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

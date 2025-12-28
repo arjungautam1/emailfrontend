@@ -1,0 +1,108 @@
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  height: calc(100vh - 20px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.header p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 10px 15px;
+  margin: 10px 15px;
+  border-radius: 6px;
+  border-left: 4px solid #c33;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.error-message button {
+  background: #c33;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error-message button:hover {
+  background: #a22;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 15px;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  display: none;
+}
+
+.list-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
