@@ -16,7 +16,10 @@ function App() {
   const fetchEmails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${config.API_BASE_URL}/api/emails`, {
+      const url = config.API_BASE_URL 
+        ? `${config.API_BASE_URL}/api/emails`
+        : '/api/emails'; // Use proxy when API_BASE_URL is empty
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +46,10 @@ function App() {
       
       if (action === 'send') {
         // Send email endpoint
-        const response = await fetch(`${config.API_BASE_URL}/api/emails/send`, {
+        const url = config.API_BASE_URL 
+          ? `${config.API_BASE_URL}/api/emails/send`
+          : '/api/emails/send';
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -62,7 +68,10 @@ function App() {
         return true;
       } else {
         // Save as draft
-        const response = await fetch(`${config.API_BASE_URL}/api/emails`, {
+        const url = config.API_BASE_URL 
+          ? `${config.API_BASE_URL}/api/emails`
+          : '/api/emails';
+        const response = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -84,7 +93,10 @@ function App() {
 
   const handleDeleteEmail = async (id) => {
     try {
-      const response = await fetch(`${config.API_BASE_URL}/api/emails/${id}`, {
+      const url = config.API_BASE_URL 
+        ? `${config.API_BASE_URL}/api/emails/${id}`
+        : `/api/emails/${id}`;
+      const response = await fetch(url, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete email');
@@ -98,7 +110,10 @@ function App() {
   const handleSendEmail = async (id) => {
     try {
       setError(null);
-      const response = await fetch(`${config.API_BASE_URL}/api/emails/${id}/send`, {
+      const url = config.API_BASE_URL 
+        ? `${config.API_BASE_URL}/api/emails/${id}/send`
+        : `/api/emails/${id}/send`;
+      const response = await fetch(url, {
         method: 'POST',
       });
       

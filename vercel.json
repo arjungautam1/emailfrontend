@@ -1,6 +1,7 @@
 {
   "env": {
     "VITE_API_URL": "https://emailbackend-rhmf.onrender.com"
-  }
+  },
+  "comment": "For local development, leave VITE_API_URL empty to use Vite proxy. For production, this is set automatically."
 }
 
