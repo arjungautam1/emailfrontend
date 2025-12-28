@@ -1,0 +1,6 @@
+{
+  "env": {
+    "VITE_API_URL": "https://emailbackend-rhmf.onrender.com"
+  }
+}
+
